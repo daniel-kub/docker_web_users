@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.1
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: daniel25
+    ports:
+      - "3306:3306"   # dostęp do MySQL z hosta
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - web
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    depends_on:
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.techrabka.eu`)"
+      - "traefik.http.routers.phpmyadmin.entrypoints=web"   # tylko port 80
+      - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
+    networks:
+      - web
+
+volumes:
+  db_data:
+
+networks:
+  web:
+    external: true

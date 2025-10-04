@@ -1,0 +1,28 @@
+version: '3.8'
+name: panel-projekt
+
+services:
+  panel:
+    image: php:8.2-apache
+    container_name: panel-hasla
+    volumes:
+      - ./html:/var/www/html
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/shadow:/etc/shadow
+      - /etc/group:/etc/group:ro
+      - /home/userwww:/home/userwww
+
+    networks:
+      - web
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.panel.rule=Host(`panel.techrabka.eu`)"
+      - "traefik.http.routers.panel.entrypoints=web"
+      # Jeśli chcesz HTTPS (Let's Encrypt)
+      # - "traefik.http.routers.panel.entrypoints=websecure"
+      # - "traefik.http.routers.panel.tls.certresolver=myresolver"
+
+networks:
+  web:
+    external: true
