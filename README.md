@@ -68,11 +68,11 @@ Plik Docker Compose dla Traefik. Konfiguruje reverse proxy do routingu ruchu z s
 Na podstawie analizy repozytorium (https://github.com/daniel-kub/docker_web_users), README.md nie zawiera szczegółowych instrukcji uruchomienia. Projekt wydaje się być w fazie rozwoju, a pliki konfiguracyjne (jak docker-compose.yml) nie zostały w pełni udokumentowane lub ich zawartość nie jest dostępna w surowej formie. Dlatego opisuję kroki na podstawie standardowych praktyk dla projektów opartych na Docker, Traefik, MySQL i Python, uwzględniając strukturę repozytorium. Zakładam, że masz zainstalowanego Dockera, Docker Compose oraz Pythona (wersja 3.x).
 
 ### Wymagania wstępne
-- **System operacyjny**: Linux (zalecany, ze względu na skrypty shellowe jak usluga.sh), Windows lub macOS z Docker Desktop.
+- **System operacyjny**: Linux (zalecany Ubuntu Server, ze względu na skrypty shellowe jak usluga.sh)
 - **Oprogramowanie**:
   - Docker i Docker Compose (wersja 2+).
-  - Python 3 z bibliotekami potrzebnymi do skryptu (np. jeśli skrypt używa modułów jak subprocess, requests – zainstaluj je via `pip install -r requirements.txt`, jeśli plik istnieje; w przeciwnym razie załóż standardowe biblioteki).
-  - Domena z DNS skonfigurowanym do wildcard subdomen (np. *.example.com指向ujący na IP serwera) dla Traefik.
+  - Python 3 z bibliotekami potrzebnymi do skryptu (np. jeśli skrypt używa modułów jak subprocess, requests – zainstaluj je via `sudo pip install -r requirements.txt --break-system-packages`).
+  - Domena z DNS skonfigurowanym do wildcard subdomen (np. *.example.com) dla Traefik.
 - **Konfiguracja środowiska**:
   - Ustaw zmienne środowiskowe, jeśli wymagane (np. dla MySQL: root password; dla Traefik: certyfikaty Let's Encrypt).
   - Upewnij się, że porty 80, 443 (dla Traefik) i inne (np. 3306 dla MySQL) są otwarte.
@@ -107,9 +107,6 @@ MySQL obsługuje bazy danych dla użytkowników, a PHPMyAdmin to interfejs webow
 ### Krok 4: Uruchom panel administracyjny
 Panel zawiera API (Python) i frontend (PHP) do zarządzania, np. zmiany haseł.
 -Zainstaluj do Pythona niezbędne paczki 
-```
-sudo pip install -r requirements.txt --break-system-packages
-```
 - Przejdź do katalogu: `cd ../panel` (lub z głównego: `cd panel`)
 - W podkatalogu `api`:
   - Uruchom skrypt usługi: `./api/usluga.sh` (prawdopodobnie instaluje lub startuje API jako usługę; jeśli to systemd, użyj `sudo systemctl start userapi` po konfiguracji).
