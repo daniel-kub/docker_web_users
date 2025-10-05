@@ -25,7 +25,7 @@ services:
       - db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.techrabka.eu`)"
+      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.axample.com`)"
       - "traefik.http.routers.phpmyadmin.entrypoints=web"   # tylko port 80
       - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
     networks:
