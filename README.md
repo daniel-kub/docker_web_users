@@ -136,5 +136,3 @@ Skrypt `dodaj_uzytkownika.py` automatyzuje tworzenie użytkownika z FTP, MySQL i
 - Jeśli napotkasz błędy, sprawdź konfiguracje (np. volumes dla persistencji danych w MySQL).
 - Brak pełnych instrukcji w repo sugeruje, że to projekt edukacyjny lub WIP – rozważ kontakt z autorem (daniel-kub) na GitHub.
 - Bezpieczeństwo: Ustaw silne hasła, użyj HTTPS via Traefik.
-
-Jeśli potrzebujesz więcej szczegółów, podaj dodatkowe informacje lub sprawdź aktualizacje repozytorium.
