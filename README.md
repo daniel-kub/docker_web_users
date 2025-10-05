@@ -121,7 +121,7 @@ Panel zawiera API (Python) i frontend (PHP) do zarządzania, np. zmiany haseł.
 ### Krok 5: Dodaj użytkownika
 Skrypt `dodaj_uzytkownika.py` automatyzuje tworzenie użytkownika z FTP, MySQL i stroną.
 - Z głównego katalogu: `python dodaj_uzytkownika.py [argumenty]`
-  - Argumenty: Prawdopodobnie nazwa użytkownika, hasło, subdomena (np. `python dodaj_uzytkownika.py --user nowyuser --password haslo123 --domain example.com`).
+  - Argumenty: Prawdopodobnie nazwa użytkownika, hasło, subdomena (np. `python dodaj_uzytkownika.py user`).
   - Skrypt tworzy kontener strony (używając `strony/Dockerfile`), dodaje użytkownika do MySQL i konfiguruje FTP.
 - Jeśli skrypt wymaga edycji, sprawdź kod dla komentarzy.
 
