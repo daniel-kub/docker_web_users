@@ -6,9 +6,9 @@ services:
     container_name: mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: daniel25
+      MYSQL_ROOT_PASSWORD: password
     ports:
-      - "3306:3306"   # dostęp do MySQL z hosta
+      - "3306:3306"   
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -25,8 +25,8 @@ services:
       - db
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.axample.com`)"
-      - "traefik.http.routers.phpmyadmin.entrypoints=web"   # tylko port 80
+      - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.example.com`)"
+      - "traefik.http.routers.phpmyadmin.entrypoints=web"  
       - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
     networks:
       - web

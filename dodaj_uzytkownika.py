@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 import subprocess
 import sys
 import pymysql
@@ -9,7 +9,7 @@ import os
 DEFAULT_PASSWORD = "1234"
 MYSQL_ROOT_PASSWORD = "daniel25"  # <- zmień na swoje hasło roota MySQL
 OUTPUT_DIR = "/home/userwww/strony"  # katalog na strony / FTP
-DOMAIN = "techrabka.eu"  # domena główna
+DOMAIN = "example.com"  # domena główna
 
 
 def ensure_shell_in_etc_shells(shell_path: str):

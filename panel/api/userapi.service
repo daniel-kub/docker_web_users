@@ -1,0 +1,11 @@
+[Unit]
+Description=User Password API
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/userapi/main.py
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

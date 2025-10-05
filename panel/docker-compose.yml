@@ -19,9 +19,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.panel.rule=Host(`panel.example.com`)"
       - "traefik.http.routers.panel.entrypoints=web"
-      # Jeśli chcesz HTTPS (Let's Encrypt)
-      # - "traefik.http.routers.panel.entrypoints=websecure"
-      # - "traefik.http.routers.panel.tls.certresolver=myresolver"
 
 networks:
   web:
