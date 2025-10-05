@@ -106,10 +106,13 @@ MySQL obsługuje bazy danych dla użytkowników, a PHPMyAdmin to interfejs webow
 
 ### Krok 4: Uruchom panel administracyjny
 Panel zawiera API (Python) i frontend (PHP) do zarządzania, np. zmiany haseł.
+-Zainstaluj do Pythona niezbędne paczki 
+```
+sudo pip install -r requirements.txt --break-system-packages
+```
 - Przejdź do katalogu: `cd ../panel` (lub z głównego: `cd panel`)
 - W podkatalogu `api`:
   - Uruchom skrypt usługi: `./api/usluga.sh` (prawdopodobnie instaluje lub startuje API jako usługę; jeśli to systemd, użyj `sudo systemctl start userapi` po konfiguracji).
-  - Dodaj mu brakujące pakiety poprzez sudo pip install -r requirements.txt --break-system-packages
   - API jest w `api/main.py` – prawdopodobnie uruchamiane jako serwer (np. Flask/Uvicorn). Jeśli nie startuje automatycznie, wykonaj: `python api/main.py`.
 - Edytuj `docker-compose.yml` jeśli potrzeba (np. volumes dla danych).
 - Uruchom:
